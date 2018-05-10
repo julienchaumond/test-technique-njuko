@@ -52,7 +52,7 @@
                                 <td><?=$participant->getEvent()->getName()?></td>
                                 <td>
                                     <a class="btn btn-sm btn-default" href="<?= $this->url('participant/participant-form', array('id' => $participant->getId())) ?>">Editer</a>
-                                    <a class="btn btn-sm btn-default" href="<?= $this->url('participant/delete', array('id' => $participant->getId())) ?>">Supprimer</a>
+                                    <a class="btn btn-sm btn-default" onclick="confirmDelete('<?=$participant->getFirstname()?>','<?=$participant->getLastname()?>','<?= $this->url('participant/delete', array('id' => $participant->getId())) ?>')">Supprimer</a>
                                 </td>
                             </tr>
                         <?php } ?>

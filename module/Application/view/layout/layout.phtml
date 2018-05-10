@@ -21,6 +21,8 @@
         <?= $this->headScript()
             ->prependFile($this->basePath('js/bootstrap.min.js'))
             ->prependFile($this->basePath('js/jquery-3.1.0.min.js'))
+            // Add custom JS file
+            ->prependFile($this->basePath('js/participant.js'))
         ?>
     </head>
     <body style="background:url('<?= $this->basePath('img/background.jpeg') ?>') no-repeat fixed center top !important;">
