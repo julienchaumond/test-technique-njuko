@@ -3,11 +3,18 @@
 namespace Participant\Form;
 
 use Zend\Form\Form;
+use DoctrineModule\Form\Element\ObjectSelect;
+use Doctrine\ORM\EntityManager;
 
 class ParticipantForm extends Form
 {
-    public function __construct($name = null)
+
+    /** @var EntityManager entityManager */
+    protected $entityManager;
+
+    public function __construct(EntityManager $entityManager)
     {
+        $this->entityManager = $entityManager;
 
         parent::__construct('user');
 
@@ -52,6 +59,19 @@ class ParticipantForm extends Form
                 ]
             ],
         ]);
+
+        $eventFieldset = new ObjectSelect('event');
+        $eventFieldset->setOptions(array(
+            'object_manager' => $this->entityManager,
+            'target_class' => '\Application\Entity\Event',
+            'label' => 'Événement',
+            'property' => 'name',
+            'is_method' => true,
+        ));
+
+        $eventFieldset->setAttribute('class', 'form-control');
+
+        $this->add($eventFieldset);
 
         $this->add([
             'name'       => 'submit',

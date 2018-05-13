@@ -25,13 +25,13 @@ class Module
                     /** @var EntityManager $entityManager */
                     $entityManager = $serviceManager->get("doctrine.entitymanager.orm_default");
                     /** @var \Zend\Form\Form $form */
-                    $form = new ParticipantForm();
+                    $form = new ParticipantForm($entityManager);
 
                     $form->setHydrator(new DoctrineHydrator($entityManager));
                     $form->setObject(new Participant());
 
                     return $form;
-                },
+                }
             ]
         );
     }
