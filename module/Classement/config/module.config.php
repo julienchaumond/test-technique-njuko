@@ -4,7 +4,7 @@ namespace Classement;
 
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
-use Zend\ServiceManager\Factory\InvokableFactory;
+use Classement\Controller\ClassementControllerFactory;
 
 return [
     'router' => [
@@ -12,7 +12,8 @@ return [
             'classement' => [
                 'type' => Segment::class,
                 'options' => [
-                    'route'    => '/classement',
+                    // The classement route takes in first the eventId then the type (general, female, male) and finally the type of sort
+                    'route'    => '/classement[/:event_id[/:type[/:sort]]]',
                     'defaults' => [
                         'controller' => Controller\ClassementController::class,
                         'action'     => 'index',
@@ -23,7 +24,7 @@ return [
     ],
     'controllers' => [
         'factories' => [
-            Controller\ClassementController::class => InvokableFactory::class,
+            Controller\ClassementController::class => ClassementControllerFactory::class,
         ],
     ],
     'view_manager' => [
