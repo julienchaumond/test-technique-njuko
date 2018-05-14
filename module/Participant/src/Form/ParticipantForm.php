@@ -60,6 +60,13 @@ class ParticipantForm extends Form
             ],
         ]);
 
+        $this->add([
+            'name' => 'dossard_number',
+            'type' => 'Text',
+            'options' => [
+                'label' => 'Numéro de dossard'
+            ]
+        ]);
         $eventFieldset = new ObjectSelect('event');
         $eventFieldset->setOptions(array(
             'object_manager' => $this->entityManager,

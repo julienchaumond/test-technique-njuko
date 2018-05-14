@@ -25,6 +25,7 @@
                         <td>Nom</td>
                         <td>Prénom</td>
                         <td>Sexe</td>
+                        <td>Numéro de dossard</td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -49,6 +50,7 @@
                                         }
                                     ?>
                                 </td>
+                                <td><?=empty($participant->getDossardNumber()) ? 'N/C' : $participant->getDossardNumber()?></td>
                                 <td><?=$participant->getEvent()->getName()?></td>
                                 <td>
                                     <a class="btn btn-sm btn-default" href="<?= $this->url('participant/participant-form', array('id' => $participant->getId())) ?>">Editer</a>

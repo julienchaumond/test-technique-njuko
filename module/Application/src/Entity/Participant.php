@@ -31,6 +31,9 @@ class Participant
      */
     protected $event;
 
+    /** @ORM\Column(type="string") */
+    protected $dossard_number;
+
     /**
      * @return mixed
      */
@@ -111,4 +114,19 @@ class Participant
         $this->event = $event;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getDossardNumber()
+    {
+        return $this->dossard_number;
+    }
+
+    /**
+     * @param mixed $dossard_number
+     */
+    public function setDossardNumber($dossard_number)
+    {
+        $this->dossard_number = $dossard_number;
+    }
 }
