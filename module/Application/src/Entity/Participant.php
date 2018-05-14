@@ -31,10 +31,10 @@ class Participant
      */
     protected $event;
 
-    /** @ORM\Column(type="string") */
+    /** @ORM\Column(type="string", nullable=true) */
     protected $dossard_number;
 
-    /** @ORM\Column(type="string") */
+    /** @ORM\Column(type="string", options={"default":"00:00:00"}) */
     protected $measured_time;
 
     /**

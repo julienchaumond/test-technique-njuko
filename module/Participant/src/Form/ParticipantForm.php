@@ -72,6 +72,7 @@ class ParticipantForm extends Form
             'name' => 'measured_time',
             'type' => 'Time',
             'attributes' => [
+                'required' => false,
                 'min'  => '00:00:00',
                 'max'  => '23:59:59',
                 'step' => '1'
