@@ -72,14 +72,14 @@ class ParticipantController extends AbstractActionController
 
             // Event change is done by the ObjectSelect in the form
 
+            // I've decided to let Zend deal with the measuredTime format
+
             $this->entityManager->persist($participant);
             $this->entityManager->flush();
 
             return $this->redirect()->toRoute('participant/list');
 
         }
-
-
     }
 
     public function generateBibNumbersAction(){

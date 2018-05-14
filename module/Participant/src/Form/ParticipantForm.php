@@ -67,6 +67,21 @@ class ParticipantForm extends Form
                 'label' => 'Numéro de dossard'
             ]
         ]);
+
+        $this->add([
+            'name' => 'measured_time',
+            'type' => 'Time',
+            'attributes' => [
+                'min'  => '00:00:00',
+                'max'  => '23:59:59',
+                'step' => '1'
+            ],
+            'options' => [
+                'label' => 'Temps de passage',
+                'format' => 'H:i:s'
+            ]
+        ]);
+
         $eventFieldset = new ObjectSelect('event');
         $eventFieldset->setOptions(array(
             'object_manager' => $this->entityManager,
