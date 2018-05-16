@@ -51,13 +51,17 @@ class ClassementController extends AbstractActionController
         	$selectedSort = 'dossard_number';
         }
 
+        $sortType = $this->params()->fromRoute('sortType', 0);
+        if (empty($sortType)) {
+            $sortType = 'ASC';
+        }
  		// Building the query
        	$searchParameters = ['event' => $selectedEvent];
         if ($selectedType != 'general') {
         	$searchParameters['sex'] = $selectedType;
         }
 
-        $participants = $this->entityManager->getRepository('Application\Entity\Participant')->findBy($searchParameters, [$selectedSort => 'ASC']);
+        $participants = $this->entityManager->getRepository('Application\Entity\Participant')->findBy($searchParameters, [$selectedSort => $sortType]);
 
         return new ViewModel([
         	'typeList' => $typeList,
@@ -65,6 +69,7 @@ class ClassementController extends AbstractActionController
         	'events' => $events,
         	'selectedEvent' => $selectedEvent->getId(),
         	'sortList' => $sortList,
+            'sortType' => $sortType,
         	'selectedSort' => $selectedSort,
         	'participants' => $participants
         ]);

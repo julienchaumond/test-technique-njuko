@@ -13,7 +13,7 @@ return [
                 'type' => Segment::class,
                 'options' => [
                     // The classement route takes in first the eventId then the type (general, female, male) and finally the type of sort
-                    'route'    => '/classement[/:event_id[/:type[/:sort]]]',
+                    'route'    => '/classement[/:event_id[/:type[/:sort[/:sortType]]]]',
                     'defaults' => [
                         'controller' => Controller\ClassementController::class,
                         'action'     => 'index',

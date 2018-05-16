@@ -32,30 +32,43 @@
 		            <?php } ?>
 		        </select>
 	        </div>
-
-	        <!-- Sorting choice -->
-			<label class="col-sm-2 control-label">Trier par</label>
-			<div class="col-sm-10">
-				<select class="form-control" onchange="location = this.value">
-					<?php foreach ($sortList as $key => $value) { ?>
-						<option 
-							value="<?=$this->url('classement', ['event_id' => $selectedEvent, 'type' => $selectedType, 'sort' => $key])?>"
-							<?php if ($key == $selectedSort) { ?> selected <?php } ?>>
-								<?=$value?>
-						</option>	
-					<?php } ?>
-				</select>
-			</div>
 		</div>
     <div class="col-md-12 text-center">
         <div class="table-responsive mt-20">
             <table class="table">
                 <thead>
                     <tr>
-                        <td>Dossard</td>
-                        <td>Nom</td>
-                        <td>Prénom</td>
-                        <td>Temps de passage</td>
+                    	<?php 
+                    		// Define sort type (ASC or DESC) for the display of the arrow (chevron)
+                    		$glyphiconClass = '';
+                    		// Define the next sort type after clicking on the same chevron
+                    		$nextSortType = '';
+                    		if ($this->sortType == 'ASC') {
+                    			$glyphiconClass = 'glyphicon-chevron-down';
+                    			$nextSortType = 'DESC';
+                    		} else {
+                    			$glyphiconClass = 'glyphicon-chevron-up';
+                    			$nextSortType = 'ASC';
+                    		}
+
+                    		foreach ($sortList as $key => $value) { 
+                    			$spanClass = 'glyphicon ';
+                    			$sortType = '';
+                    			if ($key == $selectedSort) {
+                    				$spanClass .= $glyphiconClass;
+                    				$sortType = $nextSortType;
+                    			} else {
+                    				$spanClass .= 'glyphicon-chevron-down disabled';
+                    				$sortType = 'ASC';
+                    			}
+                    			?>
+                    			<td>
+		                        	<a href="<?=$this->url('classement', ['event_id' => $selectedEvent, 'type' => $selectedType, 'sort' => $key, 'sortType' => $sortType])?>" class="sort-link">
+		                        		<?=$value?> 
+		                        		<span class="<?=$spanClass?>"></span>
+		                        	</a>
+		                        </td>
+                    		<?php } ?>
                     </tr>
                 </thead>
                 <tbody>
