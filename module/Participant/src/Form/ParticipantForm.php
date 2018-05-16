@@ -62,7 +62,10 @@ class ParticipantForm extends Form
 
         $this->add([
             'name' => 'dossard_number',
-            'type' => 'Text',
+            'type' => 'Number',
+            'attributes' => [
+                'min' => '1'
+            ],
             'options' => [
                 'label' => 'Numéro de dossard'
             ]

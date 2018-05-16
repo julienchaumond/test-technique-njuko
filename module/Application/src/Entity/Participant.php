@@ -31,7 +31,7 @@ class Participant
      */
     protected $event;
 
-    /** @ORM\Column(type="string", nullable=true) */
+    /** @ORM\Column(type="integer", nullable=true) */
     protected $dossard_number;
 
     /** @ORM\Column(type="string", options={"default":"00:00:00"}) */
