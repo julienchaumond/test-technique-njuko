@@ -76,13 +76,11 @@ class ParticipantForm extends Form
             'type' => 'Time',
             'attributes' => [
                 'required' => false,
-                'min'  => '00:00:00',
-                'max'  => '23:59:59',
+                'value' => '00:00:00',
                 'step' => '1'
             ],
             'options' => [
-                'label' => 'Temps de passage',
-                'format' => 'H:i:s'
+                'label' => 'Temps de passage'
             ]
         ]);
 
